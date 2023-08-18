@@ -13,6 +13,10 @@ def create_ballpark(ballpark_name, home_team, capacity, location, year_opened, s
 
     return ballpark
 
+def get_ballparks():
+    
+    return Ballpark.query.all()
+
 def create_feature(unique_feature, ballpark):
     
     feature = Feature(unique_feature=unique_feature, ballpark=ballpark)

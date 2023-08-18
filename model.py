@@ -59,7 +59,7 @@ class BucketList(db.Model):
     completed = db.Column(db.Boolean)
 
     user = db.relationship("User", backref="bucket_list")
-    ballpark = db.relationship("Ballpark", backref="bucket_list")
+    feature = db.relationship("Feature", backref="bucket_list")
 
     def __repr__(self):
         return f"<Bucket-List bucket_list_id={self.bucket_list_id} feature_id={self.feature_id}>"

@@ -8,6 +8,16 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
+@app.route("/")
+def home():
+    return render_template("base.html")
+
+@app.route("/ballparks")
+def all_ballparks():
+
+    ballparks = crud.get_ballparks()
+
+    return render_template("ballparks.html", ballparks=ballparks)
 
 if __name__ == "__main__":
     connect_to_db(app)

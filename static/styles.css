@@ -1,0 +1,50 @@
+header {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+
+}
+
+.ballpark-image {
+    height: 200px;
+    width: 300px;
+    border-top: 1px solid black;
+
+}
+
+#team-logo {
+    height: 50px;
+    width: fit-content;
+}
+
+#ballparks{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+    margin: 50px;
+}
+
+.ballpark-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    text-align: center!important;
+    box-shadow: 4px 4px 2px rgba(0,0,0,.125);
+}
+
+#ballpark-name{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+

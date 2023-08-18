@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<section id="ballparks">
+    {% for ballpark in ballparks %}
+    <div class="ballpark-card">
+        <p id="ballpark-name">{{ballpark.ballpark_name}}</p>
+        <img id="team-logo"  src="{{ballpark.team_logo}}" alt="primary logo">
+
+        <img class="ballpark-image" src="{{ ballpark.ballpark_image }}" alt="ballpark view from home"/>
+
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}
