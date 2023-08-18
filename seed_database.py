@@ -49,12 +49,15 @@ with server.app.app_context():
         features_in_db = []
         for feature in feature_data:
 
-            unique_feature, ballpark= (
+            unique_feature, ballpark_id= (
                 feature["unique_feature"],
-                feature["ballpark"]
+                feature["ballpark_id"]
             )
 
-        db_feature = crud.create_feature(unique_feature, ballpark)
+        db_feature = crud.create_feature(unique_feature, ballpark_id)
         features_in_db.append(db_feature)
+
+    model.db.session.add_all(features_in_db)
+    model.db.session.commit()
 
 

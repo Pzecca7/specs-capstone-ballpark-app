@@ -2,10 +2,34 @@ header {
     height: 250px;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    background-image: url("https://i.pinimg.com/originals/ba/1e/c1/ba1ec15cc6bae37822e0eea5dbc24108.jpg");
+    background-size: 1450px;
 
 }
 
+#bricks{
+    height: 200px;
+    background-image: url("https://images.pexels.com/photos/207142/pexels-photo-207142.jpeg?cs=srgb&dl=pexels-pixabay-207142.jpg&fm=jpg");
+    background-size: 900px;
+    color:  #ffeb13;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+#yellow{
+    text-align: center;
+    font-weight: bolder;
+    text-shadow: 2px 4px 6px black;
+}
+
+#ivy{
+    height: 500px;
+}
 .ballpark-image {
     height: 200px;
     width: 300px;

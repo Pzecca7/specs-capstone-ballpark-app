@@ -17,9 +17,9 @@ def get_ballparks():
     
     return Ballpark.query.all()
 
-def create_feature(unique_feature, ballpark):
+def create_feature(unique_feature, ballpark_id):
     
-    feature = Feature(unique_feature=unique_feature, ballpark=ballpark)
+    feature = Feature(unique_feature=unique_feature, ballpark_id=ballpark_id)
 
     return feature
 
