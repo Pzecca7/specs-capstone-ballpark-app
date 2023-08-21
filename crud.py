@@ -7,6 +7,12 @@ def create_user(username, email, password, favorite_team):
 
     return user
 
+def get_by_username(username):
+
+    user = User(username=username)
+
+    return user
+
 def create_ballpark(ballpark_name, home_team, capacity, location, year_opened, surface ,roof_type, ballpark_image, ballpark_dimensions, team_logo ):
 
     ballpark = Ballpark(ballpark_name=ballpark_name, home_team=home_team, capacity=capacity, location=location, year_opened=year_opened, surface=surface, roof_type=roof_type, ballpark_image=ballpark_image, ballpark_dimensions=ballpark_dimensions, team_logo=team_logo)
