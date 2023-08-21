@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}All Ballparks{% endblock %}
+
 {% block body %}
 <section id="ballparks">
     {% for ballpark in ballparks %}
@@ -8,6 +10,11 @@
         <img id="team-logo"  src="{{ballpark.team_logo}}" alt="primary logo">
 
         <img class="ballpark-image" src="{{ ballpark.ballpark_image }}" alt="ballpark view from home"/>
+
+        <div id="bp-btns">
+            <button class="btn btn-primary">Reviews</button>
+            <button class="btn btn-danger">Ratings</button>
+        </div>
 
     </div>
     {% endfor %}

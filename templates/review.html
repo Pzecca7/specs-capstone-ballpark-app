@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Review your experience at a ballpark</h1>
+
+<div class="form-container">
+    <h3>Add Review</h3>
+    <form action="{{' url_for('add_review ')}}" method="POST"></form>
+        {{ review_form.csrf_token }}
+        <div>
+
+        </div>
+    </form>
+</div>
+{% endblock %}
