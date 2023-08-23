@@ -9,7 +9,7 @@ def create_user(username, email, password, favorite_team):
 
 def get_by_username(username):
 
-    user = User(username=username)
+    user = User.query.filter(User.username == username).first()
 
     return user
 
@@ -35,9 +35,9 @@ def create_bucket_list(feature, ballpark, completed):
 
     return bucket_list
 
-def create_review(visit_date, seat_location, description, seat_view, favorite_food_tried):
+def create_review(visit_date, seat_location, description, seat_view, favorite_food_tried, user_id, ballpark_id):
 
-    review = Review(visit_date=visit_date, seat_location=seat_location, description=description, seat_view=seat_view, favorite_food_tried=favorite_food_tried)
+    review = Review(visit_date=visit_date, seat_location=seat_location, description=description, seat_view=seat_view, favorite_food_tried=favorite_food_tried, user_id=user_id, ballpark_id=ballpark_id)
 
     return review
 

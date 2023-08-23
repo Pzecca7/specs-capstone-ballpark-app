@@ -38,6 +38,7 @@ with server.app.app_context():
             )
 
             db_ballpark = crud.create_ballpark(ballpark_name, home_team, capacity, location, year_opened, surface, roof_type, ballpark_image, ballpark_dimensions, team_logo)
+            print(db_ballpark)
             ballparks_in_db.append(db_ballpark)
 
     model.db.session.add_all(ballparks_in_db)
@@ -54,8 +55,9 @@ with server.app.app_context():
                 feature["ballpark_id"]
             )
 
-        db_feature = crud.create_feature(unique_feature, ballpark_id)
-        features_in_db.append(db_feature)
+            db_feature = crud.create_feature(unique_feature, ballpark_id)
+            print(db_feature)
+            features_in_db.append(db_feature)
 
     model.db.session.add_all(features_in_db)
     model.db.session.commit()

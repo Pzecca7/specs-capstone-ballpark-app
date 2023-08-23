@@ -5,12 +5,13 @@
 
 <h2>Please Create an Account</h2>
 
-<form method="Post" action="/create-account">
+<form method="POST" action="/create-account">
         <div>{{ create_account_form.username.label }}: {{ create_account_form.username }}</div>
+        <div>{{ create_account_form.email.label }}: {{ create_account_form.email }}</div>
         <div>{{ create_account_form.password.label }}: {{ create_account_form.password }}</div>
         <div>{{ create_account_form.favorite_team.label}}: {{ create_account_form.favorite_team }}</div>
-        {{ create_account_form.csrf_token }}
         <button class="btn btn-primary" type="submit">Create</button>
+        {{ create_account_form.csrf_token }}
 </form>
 
 

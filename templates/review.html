@@ -1,15 +1,41 @@
 {% extends 'base.html' %}
 
+{% block title %}Review-Ballpark{% endblock %}
+
 {% block body %}
 
 <h1>Review your experience at a ballpark</h1>
 
-<div class="form-container">
+<div class="form-container mt-5">
     <h3>Add Review</h3>
-    <form action="{{' url_for('add_review ')}}" method="POST"></form>
-        {{ review_form.csrf_token }}
-        <div>
-
+    <form method="POST" action='/add-review'>
+        {{ review_form.hidden_tag() }}
+        <div class="form-group mt-2">
+            {{ review_form.visit_date.label }}
+            {{ review_form.visit_date }}
+        </div>
+        <div class="form-group mt-2">
+            {{ review_form.ballpark_selection.label }}
+            {{ review_form.ballpark_selection }}
+        </div>
+        <div class="form-group mt-2">
+            {{ review_form.seat_location.label }}
+            {{ review_form.seat_location(placeholder="section: / row: / seat:") }}
+        </div>
+        <div class="form-group mt-2">
+            {{ review_form.seat_view.label }}
+            {{ review_form.seat_view(placeholder="upload an image") }}
+        </div>
+        <div class="form-group mt-2">
+            {{ review_form.description.label }}
+            {{ review_form.description(placeholder="How were your seats?", class="form-control")}}
+        </div>
+        <div class="form-group mt-2">
+            {{ review_form.favorite_food_tried.label }}
+            {{ review_form.favorite_food_tried }}
+        </div>
+        <div class="form-group mt-2">
+            {{ review_form.submit(type="submit", class="btn btn-primary") }}
         </div>
     </form>
 </div>

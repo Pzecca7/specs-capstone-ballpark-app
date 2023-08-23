@@ -33,7 +33,7 @@ header {
 .ballpark-image {
     height: 200px;
     width: 300px;
-    border-top: 1px solid black;
+    border: 1px solid black;
 
 }
 

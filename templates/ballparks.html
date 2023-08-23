@@ -12,8 +12,8 @@
         <img class="ballpark-image" src="{{ ballpark.ballpark_image }}" alt="ballpark view from home"/>
 
         <div id="bp-btns">
-            <button class="btn btn-primary">Reviews</button>
-            <button class="btn btn-danger">Ratings</button>
+            <a href="/ballparks/{{ ballpark.ballpark_id }}/reviews"><button class="btn btn-primary">Reviews</button></a>
+            <a href="/ballparks/{{ ballpark.ballpark_id }}/ratings"><button class="btn btn-danger">Ratings</button></a>
         </div>
 
     </div>

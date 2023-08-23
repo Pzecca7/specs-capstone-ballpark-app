@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Rate-Ballpark{% endblock %}
+
+
+{% block body %}
+
+<h2>Rate the ballpark</h2>
+<div class="form-container mt-5">
+    <h3>Add Ratings</h3>
+    <form action='/create-rating' method="POST">
+        {{ rating_form.csrf_token }}
+        <div class="form-group mt-2">
+            {{ rating_form.ballpark_selection.label }}
+            {{ rating_form.ballpark_selection }}
+        </div>
+        <div class="form-group mt-2">
+            {{ rating_form.atmosphere_score.label }}
+            {{ rating_form.atmosphere_score }}
+        </div>
+        <div class="form-group mt-2">
+            {{ rating_form.accessibility_score.label}}
+            {{ rating_form.accessibility_score}}
+        </div>
+        <div class="form-group mt-2">
+            {{ rating_form.concessions_score.label }}
+            {{ rating_form.concessions_score }}
+        </div>
+        <div class="form-group mt-2">
+            {{ rating_form.aesthetics_score.label }}
+            {{ rating_form.aesthetics_score }}
+        </div>
+        <div class="form-group mt-2">
+            {{ rating_form.submit(type="submit", class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
