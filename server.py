@@ -88,6 +88,7 @@ def review():
 def add_review():
 
     if 'username' not in session:
+        flash("You must be logged in to review your seats")
         return redirect("/login")
     
     user = crud.get_by_username(session["username"])
@@ -111,12 +112,14 @@ def add_review():
         db.session.commit()
         return redirect(("/ballparks"))
     else:
-        return "not validated"
+        return redirect(("/home"))
 
 @app.route("/ballparks/<ballpark_id>/reviews")
-def ballpark_reviews():
+def ballpark_reviews(ballpark_id):
 
-    return render_template("ballpark-reviews.html")
+    ballpark = crud.get_ballpark_by_id(ballpark_id)
+
+    return render_template("ballpark-reviews.html", ballpark=ballpark)
 
 @app.route("/rate")
 def rate():
@@ -126,25 +129,39 @@ def rate():
 
     return render_template("rate.html", rating_form=rating_form)
 
-@app.route("/create-rating")
+@app.route("/create-rating", methods=["POST"])
 def create_rating():
 
     if 'username' not in session:
+        flash("You must be logged in to rate a ballpark")
         return redirect("/login")
     
     user = crud.get_by_username(session["username"])
+    user_id = user.user_id
 
     rating_form = RatingForm()
     rating_form.update_ballparks(Ballpark.query.all())
-
-
-
-    return redirect ("/ballparks")
+    
+    if rating_form.validate_on_submit():
+        atmosphere_score = rating_form.atmosphere_score.data
+        accessibility_score = rating_form.accessibility_score.data
+        concessions_score = rating_form.concessions_score.data
+        aesthetics_score = rating_form.aesthetics_score.data
+        ballpark_id = rating_form.ballpark_selection.data
+        rating = crud.create_rating(int(atmosphere_score), int(accessibility_score), int(concessions_score), int(aesthetics_score),user_id, ballpark_id)
+        db.session.add(rating)
+        db.session.commit()
+        return redirect(("/ballparks"))
+    else:
+        return redirect(("/home"))
 
 @app.route("/ballparks/<ballpark_id>/ratings")
-def ballpark_ratings():
+def ballpark_ratings(ballpark_id):
 
-    return render_template("ballpark-ratings.html")
+    ballpark = crud.get_ballpark_by_id(ballpark_id)
+
+
+    return render_template("ballpark-ratings.html", ballpark=ballpark)
 
 if __name__ == "__main__":
     connect_to_db(app)

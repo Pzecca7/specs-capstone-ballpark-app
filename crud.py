@@ -23,6 +23,11 @@ def get_ballparks():
     
     return Ballpark.query.all()
 
+def get_ballpark_by_id(ballpark_id):
+     
+     return Ballpark.query.get(ballpark_id)
+
+
 def create_feature(unique_feature, ballpark_id):
     
     feature = Feature(unique_feature=unique_feature, ballpark_id=ballpark_id)
@@ -41,9 +46,9 @@ def create_review(visit_date, seat_location, description, seat_view, favorite_fo
 
     return review
 
-def create_rating(atmosphere_score, acessibility_score, concessions_score, aesthetics_score):
+def create_rating(atmosphere_score, accessibility_score, concessions_score, aesthetics_score, user_id, ballpark_id):
 
-    rating = Rating(atmosphere_score=atmosphere_score, acessibility_score=acessibility_score, concessions_score=concessions_score, aesthetics_score=aesthetics_score)
+    rating = Rating(atmosphere_score=atmosphere_score, accessibility_score=accessibility_score, concessions_score=concessions_score, aesthetics_score=aesthetics_score, user_id=user_id, ballpark_id=ballpark_id)
 
     return rating
 

@@ -79,3 +79,46 @@ header {
     justify-content: space-evenly;
     
 }
+
+#ballpark-info{
+    display: flex;
+
+}
+
+#bp-img-2{
+    height: 500px;
+    width: 700px;
+    border-radius: 20px;
+}
+
+#team-logo-2{
+    height: 150px;
+    width: fit-content;
+}
+
+#bp-dimensions{
+    height: 350px;
+}
+
+.ballpark-info{
+    height: 800px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    box-shadow: 4px 4px 2px rgba(0,0,0,.125);
+    padding: 15px;
+}
+
+#dimensions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

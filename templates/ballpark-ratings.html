@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Ballpark Reviews{% endblock %}
+
+{% block body %}
+    <div class="ballpark-info">
+        <div id="info">
+            <h4>Home Team: {{ ballpark.home_team }}</h4>
+            <h4>Capacity: {{ ballpark.capacity }}</h4>
+            <h4>Location: {{ ballpark.location }}</h4>
+            <h4>Year Opened: {{ ballpark.year_opened }}</h4>
+            <h4>Playing Surface: {{ ballpark.surface }}</h4>
+            <h4>Roof Type: {{ ballpark.roof_type }}</h4>
+
+            <img id="team-logo-2" src="{{ ballpark.team_logo }}" alt="Team Logo">
+        </div>
+        <div id="main-image">
+            <h1>{{ ballpark.ballpark_name }}</h1>
+            <img id="bp-img-2" src="{{ ballpark.ballpark_image }}" alt="larger bp view">
+        </div>
+        <div id="dimensions">
+            <h4>Ballpark Dimensions:</h4>
+            <img id="bp-dimensions" src="{{ ballpark.ballpark_dimensions }}" alt="Ballpark Dimensions">
+        </div>
+    </div>
+
+
+{% endblock %}
