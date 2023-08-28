@@ -12,10 +12,11 @@
             <h4>Playing Surface: {{ ballpark.surface }}</h4>
             <h4>Roof Type: {{ ballpark.roof_type }}</h4>
 
-            <img id="team-logo-2" src="{{ ballpark.team_logo }}" alt="Team Logo">
+    
         </div>
         <div id="main-image">
-            <h1>{{ ballpark.ballpark_name }}</h1>
+            <img id="team-logo-2" src="{{ ballpark.team_logo }}" alt="Team Logo">
+            <h1>{{ ballpark.ballpark_name }} Reviews</h1>
             <img id="bp-img-2" src="{{ ballpark.ballpark_image }}" alt="larger bp view">
         </div>
         <div id="dimensions">
@@ -23,6 +24,33 @@
             <img id="bp-dimensions" src="{{ ballpark.ballpark_dimensions }}" alt="Ballpark Dimensions">
         </div>
     </div>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Visit Date</th>
+                <th>Seat Location</th>
+                <th>Seat View</th>
+                <th>Description</th>
+                <th>Favorite Food Tried</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for review in ballpark.reviews %}
+        <tr>
+            <td>{{ review.user.username }}</td>
+            <td>{{ review.visit_date }}</td>
+            <td>{{ review.seat_location }}</td>
+            <td><img id="seat_view" src="{{ review.seat_view }}" alt="Seat View"></td>
+            <td>{{ review.description }}</td>
+            <td>{{ review.favorite_food_tried }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 
 
 {% endblock %}

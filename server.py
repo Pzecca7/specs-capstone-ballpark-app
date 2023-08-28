@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, session, redirect, url_for
-from forms import ReviewForm, LoginForm, CreateAccountForm, RatingForm
-from model import db, Review, User, Ballpark, Rating, BucketList, connect_to_db
+from forms import ReviewForm, LoginForm, CreateAccountForm, RatingForm, BucketListForm
+from model import db, Review, User, Ballpark, Rating, BucketList, Feature, connect_to_db
 import crud
 
 from jinja2 import StrictUndefined
@@ -75,6 +75,18 @@ def all_ballparks():
     ballparks = crud.get_ballparks()
 
     return render_template("ballparks.html", ballparks=ballparks)
+
+@app.route("/bucket-list")
+def bucket_list():
+
+    bucket_list_form = BucketListForm()
+    # bucket_list_form.update_features(Feature.query.all())
+    # bucket_list_form.update_features(Ballpark.query.get(ballpark_id).feature)
+
+    return render_template("bucket-list.html", bucket_list_form=bucket_list_form)
+
+@app.route("/create-bucket-list")
+
 
 @app.route("/review")
 def review():

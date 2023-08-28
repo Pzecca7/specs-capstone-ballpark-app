@@ -86,26 +86,26 @@ header {
 }
 
 #bp-img-2{
-    height: 500px;
-    width: 700px;
+    height: 300px;
+    width: 500px;
     border-radius: 20px;
 }
 
 #team-logo-2{
-    height: 150px;
+    height: 100px;
     width: fit-content;
 }
 
 #bp-dimensions{
-    height: 350px;
+    height: 300px;
 }
 
 .ballpark-info{
-    height: 800px;
+    height: 600px;
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     gap: 20px;
     min-width: 0;
     word-wrap: break-word;
@@ -121,4 +121,29 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#info{
+    height: 325px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+#main-image{
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#review-header{
+    height: 200px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }

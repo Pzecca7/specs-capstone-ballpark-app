@@ -12,10 +12,10 @@
             <h4>Playing Surface: {{ ballpark.surface }}</h4>
             <h4>Roof Type: {{ ballpark.roof_type }}</h4>
 
-            <img id="team-logo-2" src="{{ ballpark.team_logo }}" alt="Team Logo">
         </div>
         <div id="main-image">
-            <h1>{{ ballpark.ballpark_name }}</h1>
+            <img id="team-logo-2" src="{{ ballpark.team_logo }}" alt="Team Logo">
+            <h1>{{ ballpark.ballpark_name }} Ratings </h1>
             <img id="bp-img-2" src="{{ ballpark.ballpark_image }}" alt="larger bp view">
         </div>
         <div id="dimensions">
@@ -23,6 +23,32 @@
             <img id="bp-dimensions" src="{{ ballpark.ballpark_dimensions }}" alt="Ballpark Dimensions">
         </div>
     </div>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Atmosphere Score</th>
+                <th>Accessibility Socre</th>
+                <th>Concessions Score</th>
+                <th>Aesthetics Score</th>
+                <th>Total Score</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for rating in ballpark.ratings %}
+        <tr>
+            <td>{{ rating.username }}</td>
+            <td>{{ rating.atmosphere_score }}</td>
+            <td>{{ rating.accessibility_score }}</td>
+            <td>{{ rating.concessions_score }}</td>
+            <td>{{ rating.aesthetics_score}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 
 
 {% endblock %}
