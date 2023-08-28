@@ -39,7 +39,7 @@ class RatingForm(FlaskForm):
     def update_ballparks(self, ballparks):
         self.ballpark_selection.choices = [ (ballpark.ballpark_id, ballpark.ballpark_name) for ballpark in ballparks ]
 
-class BucketListForm(FlaskForm):
+class FeatureForm(FlaskForm):
     feature_selection = SelectField("Must Do's")
     completed = BooleanField("completed?")
     submit = SubmitField("Submit")

@@ -25,27 +25,28 @@
         </div>
     </div>
 
-    <table class="table table-striped mt-3">
+    <table class="table table-striped mt-3 center">
         <thead>
             <tr>
                 <th>Username</th>
                 <th>Visit Date</th>
-                <th>Seat Location</th>
-                <th>Seat View</th>
-                <th>Description</th>
                 <th>Favorite Food Tried</th>
+                <th>Seat Location</th>
+                <th>Description</th>
+                <th>Seat View</th>
 
             </tr>
         </thead>
         <tbody>
         {% for review in ballpark.reviews %}
         <tr>
+
             <td>{{ review.user.username }}</td>
             <td>{{ review.visit_date }}</td>
-            <td>{{ review.seat_location }}</td>
-            <td><img id="seat_view" src="{{ review.seat_view }}" alt="Seat View"></td>
-            <td>{{ review.description }}</td>
             <td>{{ review.favorite_food_tried }}</td>
+            <td>{{ review.seat_location }}</td>
+            <td>{{ review.description }}</td>
+            <td><img id="seat-view" src="{{ review.seat_view }}" alt="Seat View"></td>
         </tr>
         {% endfor %}
         </tbody>

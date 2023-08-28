@@ -29,7 +29,6 @@ form{
     align-items: flex-start;
     padding-left: 225px;
 }
-
 .form-container{
     display: flex;
     flex-direction: column;
@@ -109,7 +108,7 @@ form{
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
-    border: 3px solid white;
+    border: 2px solid white;
     border-radius: 0.25rem;
     text-align: center!important;
     padding: 15px;
@@ -157,7 +156,8 @@ form{
     gap: 20px;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-image: url("https://e1.pxfuel.com/desktop-wallpaper/995/1013/desktop-wallpaper-baseball-bat-wood-texture-wood-grain.jpg");
+    background-size: 900px;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 0.25rem;
@@ -196,5 +196,38 @@ form{
 
 }
 thead{
+    background-color: #212529;
+    color: white;
     text-align: center;
 }
+
+
+td {
+    height: 80px;
+    width: 160px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+.rating-td{
+    height: 80px;
+    width: 325px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+#seat-view{
+    height: 200px;
+}
+
+#feature-form{
+    height: 200px;
+    width: 1600px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 0px;
+}
+

@@ -39,11 +39,11 @@
         <tbody>
         {% for rating in ballpark.ratings %}
         <tr>
-            <td>{{ rating.username }}</td>
-            <td>{{ rating.atmosphere_score }}</td>
-            <td>{{ rating.accessibility_score }}</td>
-            <td>{{ rating.concessions_score }}</td>
-            <td>{{ rating.aesthetics_score}}</td>
+            <td class="rating-td">{{ rating.user.username }}</td>
+            <td class="rating-td">{{ rating.atmosphere_score }}</td>
+            <td class="rating-td">{{ rating.accessibility_score }}</td>
+            <td class="rating-td">{{ rating.concessions_score }}</td>
+            <td class="rating-td">{{ rating.aesthetics_score}}</td>
         </tr>
         {% endfor %}
         </tbody>

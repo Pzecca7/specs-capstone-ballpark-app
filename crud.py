@@ -34,9 +34,9 @@ def create_feature(unique_feature, ballpark_id):
 
     return feature
 
-def create_bucket_list(feature, ballpark, completed):
+def create_bucket_list(feature_id, user_id, completed):
 
-    bucket_list = BucketList(feature=feature, ballpark=ballpark, completed=completed)
+    bucket_list = BucketList(feature_id=feature_id, user_id=user_id, completed=completed)
 
     return bucket_list
 

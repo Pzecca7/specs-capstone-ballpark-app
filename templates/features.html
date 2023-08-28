@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Bucket-List{% endblock %}
+
+{% block body %}
+
+
+<div id="feature-form-container" class="form-container mt-5">
+    <h2>Add Features to your Bucket-List</h2>
+    <form id="feature-form" action='/create-bucket-list/{{ ballpark_id }}' method="POST">
+        {{ feature_form.csrf_token }}
+        <div class="form-group mt-2">
+            {{ feature_form.feature_selection.label }}
+            {{ feature_form.feature_selection}}
+        </div>
+        <div class="form-group mt-2">
+            {{ feature_form.completed.label }}
+            {{ feature_form.completed}}
+        </div>
+        <div class="form-group mt-2">
+            {{ feature_form.submit(type="submit", class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

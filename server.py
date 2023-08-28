@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash, session, redirect, url_for
-from forms import ReviewForm, LoginForm, CreateAccountForm, RatingForm, BucketListForm
+from forms import ReviewForm, LoginForm, CreateAccountForm, RatingForm, FeatureForm
 from model import db, Review, User, Ballpark, Rating, BucketList, Feature, connect_to_db
 import crud
 
@@ -76,16 +76,37 @@ def all_ballparks():
 
     return render_template("ballparks.html", ballparks=ballparks)
 
-@app.route("/bucket-list")
-def bucket_list():
+@app.route("/ballparks/<ballpark_id>/features")
+def features(ballpark_id):
 
-    bucket_list_form = BucketListForm()
-    # bucket_list_form.update_features(Feature.query.all())
-    # bucket_list_form.update_features(Ballpark.query.get(ballpark_id).feature)
+    feature_form = FeatureForm()
+    feature_form.update_features(Ballpark.query.get(ballpark_id).feature)
+    
 
-    return render_template("bucket-list.html", bucket_list_form=bucket_list_form)
+    return render_template("features.html", feature_form=feature_form, ballpark_id=ballpark_id)
 
-@app.route("/create-bucket-list")
+@app.route("/create-bucket-list/<ballpark_id>", methods=["POST"])
+def create_bucket_list(ballpark_id):
+
+    if 'username' not in session:
+        flash("You must be logged in to create your bucket list.")
+        return redirect("/login")
+    
+    user = crud.get_by_username(session["username"])
+    user_id = user.user_id
+
+    feature_form = FeatureForm()
+    feature_form.update_features(Ballpark.query.get(ballpark_id).feature)
+
+    if feature_form.validate_on_submit():
+        feature_id = feature_form.feature_selection.data
+        completed = feature_form.completed.data
+        bucket_list_item = crud.create_bucket_list(feature_id, user_id, completed)
+        db.session.add(bucket_list_item)
+        db.session.commit()
+        return redirect(("/bucket-list"))
+    else:
+        return redirect(("/home"))
 
 
 @app.route("/review")
