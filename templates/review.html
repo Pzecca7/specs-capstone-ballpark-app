@@ -4,10 +4,11 @@
 
 {% block body %}
 
-<h1>Review your experience at a ballpark</h1>
+
 
 <div class="form-container mt-5">
-    <h3>Add Review</h3>
+    <div class="rr-head"><h3>Review your seats at a ballpark</h3></div>
+    <br>
     <form method="POST" action='/add-review'>
         {{ review_form.hidden_tag() }}
         <div class="form-group mt-2">
@@ -34,7 +35,7 @@
             {{ review_form.favorite_food_tried.label }}
             {{ review_form.favorite_food_tried }}
         </div>
-        <div class="form-group mt-2">
+        <div id="submit-btn" class="form-group mt-2">
             {{ review_form.submit(type="submit", class="btn btn-primary") }}
         </div>
     </form>

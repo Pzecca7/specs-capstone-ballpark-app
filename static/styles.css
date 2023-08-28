@@ -8,6 +8,54 @@ header {
 
 }
 
+body{
+    background-color:#54796d;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+form{
+    width: 1000px;
+    height: 800px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: solid 5px white;
+    border-radius: 10px;
+    background-color: #6c6d67;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding-left: 225px;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#submit-btn{
+    position: relative;
+    left: 200px;
+}
+.form-group{
+
+    padding: 20px;
+    box-shadow: inset 2px 2px 2px 2px  black
+}
+
+#login-ca{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 0px;
+}
+
+
 #bricks{
     height: 200px;
     background-image: url("https://images.pexels.com/photos/207142/pexels-photo-207142.jpeg?cs=srgb&dl=pexels-pixabay-207142.jpg&fm=jpg");
@@ -52,23 +100,23 @@ header {
 
 .ballpark-card{
     position: relative;
+    background-color: #6c6d67;
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 3px solid white;
     border-radius: 0.25rem;
     text-align: center!important;
-    box-shadow: 4px 4px 2px rgba(0,0,0,.125);
     padding: 15px;
 }
 
 #ballpark-name{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -146,4 +194,7 @@ header {
     align-items: center;
     justify-content: center;
 
+}
+thead{
+    text-align: center;
 }

@@ -16,13 +16,13 @@ class LoginForm(FlaskForm):
     submit = SubmitField('submit')
 
 class ReviewForm(FlaskForm):
-    ballpark_selection = SelectField('Ballpark')
-    visit_date = DateField('Visit Date')
-    seat_location = StringField('Seat Location')
-    description = TextAreaField('Description')
-    seat_view = StringField('Seat View')
-    favorite_food_tried = StringField('Favorite Food Tried')
-    submit = SubmitField('Submit')
+    ballpark_selection = SelectField('Ballpark: ')
+    visit_date = DateField('Visit Date: ')
+    seat_location = StringField('Seat Location: ')
+    description = TextAreaField('Description: ')
+    seat_view = StringField('Seat View: ')
+    favorite_food_tried = StringField('Favorite Food Tried: ')
+    submit = SubmitField('Submit: ')
 
     def update_ballparks(self, ballparks):
         self.ballpark_selection.choices = [ (ballpark.ballpark_id, ballpark.ballpark_name) for ballpark in ballparks ]
