@@ -15,7 +15,7 @@ body{
 
 form{
     width: 1000px;
-    height: 800px;
+    height: 875px;
     font-size: 25px;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -237,9 +237,22 @@ td {
     align-items: center;
     justify-content: space-evenly;
     padding-left: 0px;
+    margin-top: 25px;
 }
 
 #bucket-list-title{
     margin-top: 200px;
     text-align: center;
+}
+
+#ca-form{
+    height: 250px;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 0px;
+    margin-top: 25px;
 }
