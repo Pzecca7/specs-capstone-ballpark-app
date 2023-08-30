@@ -42,7 +42,7 @@
         <tr>
 
             <td>{{ review.user.username }}</td>
-            <td>{{ review.visit_date }}</td>
+            <td>{{ review.visit_date.strftime("%m/%d/%y") }}</td>
             <td>{{ review.favorite_food_tried }}</td>
             <td>{{ review.seat_location }}</td>
             <td>{{ review.description }}</td>

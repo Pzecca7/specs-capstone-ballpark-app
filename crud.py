@@ -7,6 +7,10 @@ def create_user(username, email, password, favorite_team):
 
     return user
 
+def get_user_by_id(user_id):
+
+    return User.query.get(user_id)
+
 def get_by_username(username):
 
     user = User.query.filter(User.username == username).first()
@@ -40,6 +44,10 @@ def create_bucket_list(feature_id, user_id, completed):
 
     return bucket_list
 
+def get_bucket_list_id(bucket_list_id):
+    
+    return BucketList.query.get(bucket_list_id)
+
 def create_review(visit_date, seat_location, description, seat_view, favorite_food_tried, user_id, ballpark_id):
 
     review = Review(visit_date=visit_date, seat_location=seat_location, description=description, seat_view=seat_view, favorite_food_tried=favorite_food_tried, user_id=user_id, ballpark_id=ballpark_id)
@@ -51,4 +59,8 @@ def create_rating(atmosphere_score, accessibility_score, concessions_score, aest
     rating = Rating(atmosphere_score=atmosphere_score, accessibility_score=accessibility_score, concessions_score=concessions_score, aesthetics_score=aesthetics_score, user_id=user_id, ballpark_id=ballpark_id)
 
     return rating
+
+def get_rating_by_id(rating_id):
+
+    return Rating.query.get(rating_id)
 

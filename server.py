@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, flash, session, redirect, url_for
 from forms import ReviewForm, LoginForm, CreateAccountForm, RatingForm, FeatureForm
 from model import db, Review, User, Ballpark, Rating, BucketList, Feature, connect_to_db
+from datetime import datetime
+from pprint import pprint
 import crud
 
 from jinja2 import StrictUndefined
@@ -100,14 +102,35 @@ def create_bucket_list(ballpark_id):
 
     if feature_form.validate_on_submit():
         feature_id = feature_form.feature_selection.data
-        completed = feature_form.completed.data
+        completed = False
         bucket_list_item = crud.create_bucket_list(feature_id, user_id, completed)
         db.session.add(bucket_list_item)
         db.session.commit()
-        return redirect(("/bucket-list"))
+        return redirect(("/bucket-list/"))
     else:
         return redirect(("/home"))
 
+@app.route("/bucket-list/")
+def bucket_list():
+
+    if 'username' not in session:
+        flash("You must be logged in to see your bucket list.")
+        return redirect("/login")
+
+    user = crud.get_by_username(session["username"])  
+
+    return render_template("bucket-list.html", user=user)
+
+@app.route("/update-bucketlist/<bucket_list_id>")
+def update_bucket_list(bucket_list_id):
+
+    bucket_list_item = BucketList.query.get(bucket_list_id) 
+
+    bucket_list_item.completed = True
+    db.session.add(bucket_list_item)
+    db.session.commit()
+
+    return redirect("/bucket-list")
 
 @app.route("/review")
 def review():
@@ -152,6 +175,9 @@ def ballpark_reviews(ballpark_id):
 
     ballpark = crud.get_ballpark_by_id(ballpark_id)
 
+    for review in ballpark.reviews:
+        visit_date_string = review.visit_date.strftime("%m/%d/%y")
+
     return render_template("ballpark-reviews.html", ballpark=ballpark)
 
 @app.route("/rate")
@@ -192,9 +218,22 @@ def create_rating():
 def ballpark_ratings(ballpark_id):
 
     ballpark = crud.get_ballpark_by_id(ballpark_id)
+    total_score = 0
 
 
-    return render_template("ballpark-ratings.html", ballpark=ballpark)
+    ballpark_ratings = []
+
+    for rating in ballpark.ratings:
+
+        total_score = rating.atmosphere_score + rating.concessions_score + rating.accessibility_score + rating.aesthetics_score
+
+        
+
+        rating.total_score = total_score
+
+        ballpark_ratings.append(rating)
+
+    return render_template("ballpark-ratings.html", ballpark=ballpark, ballpark_ratings=ballpark_ratings)
 
 if __name__ == "__main__":
     connect_to_db(app)

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Bucket-List{% endblock %}
+
+{% block body %}
+
+<table class="table table-striped mt-3 center">
+    <h2 id="bucket-list-title"> Ultimate Ballpark Bucket-List </h2>
+    <thead>
+        <tr>
+            <th>Ballpark</th>
+            <th>To-Do</th>
+            <th>completed?</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+    {% for to_do in user.bucket_list  %}
+        {% if to_do.completed == false %}
+    <tr>
+        <td>{{ to_do.feature.ballpark.ballpark_name }}</td>
+        <td>{{ to_do.feature.unique_feature }}</td>>
+        <td><a href="/update-bucketlist/{{to_do.bucket_list_id }}"><button class="btn btn-primary">Mark as Completed</button></a></td>
+    </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+{% endblock %}

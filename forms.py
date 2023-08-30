@@ -41,7 +41,6 @@ class RatingForm(FlaskForm):
 
 class FeatureForm(FlaskForm):
     feature_selection = SelectField("Must Do's")
-    completed = BooleanField("completed?")
     submit = SubmitField("Submit")
     
     def update_features(self, features):

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Ballpark Reviews{% endblock %}
+{% block title %}Ballpark Ratings{% endblock %}
 
 {% block body %}
     <div class="ballpark-info">
@@ -37,13 +37,14 @@
             </tr>
         </thead>
         <tbody>
-        {% for rating in ballpark.ratings %}
+        {% for rating in ballpark_ratings %}
         <tr>
             <td class="rating-td">{{ rating.user.username }}</td>
             <td class="rating-td">{{ rating.atmosphere_score }}</td>
             <td class="rating-td">{{ rating.accessibility_score }}</td>
             <td class="rating-td">{{ rating.concessions_score }}</td>
             <td class="rating-td">{{ rating.aesthetics_score}}</td>
+            <td class="rating-td">{{ rating.total_score }}</td>
         </tr>
         {% endfor %}
         </tbody>
