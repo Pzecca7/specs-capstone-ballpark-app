@@ -292,7 +292,7 @@ td {
     padding: 25px;
 }
 
-p{
+.inset-p{
     box-shadow: inset 2px 2px 2px 2px black;
     padding: 20px;
 }
