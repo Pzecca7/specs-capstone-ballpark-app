@@ -130,7 +130,7 @@ def update_bucket_list(bucket_list_id):
     db.session.add(bucket_list_item)
     db.session.commit()
 
-    return redirect("/bucket-list")
+    return redirect("/bucket-list/")
 
 @app.route("/review")
 def review():
