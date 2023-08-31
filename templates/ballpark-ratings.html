@@ -39,16 +39,18 @@
         <tbody>
         {% for rating in ballpark_ratings %}
         <tr>
-            <td class="rating-td">{{ rating.user.username }}</td>
-            <td class="rating-td">{{ rating.atmosphere_score }}</td>
-            <td class="rating-td">{{ rating.accessibility_score }}</td>
-            <td class="rating-td">{{ rating.concessions_score }}</td>
-            <td class="rating-td">{{ rating.aesthetics_score}}</td>
-            <td class="rating-td">{{ rating.total_score }}</td>
+            <td class="td-format">{{ rating.user.username }}</td>
+            <td class="td-format">{{ rating.atmosphere_score }}</td>
+            <td class="td-format">{{ rating.accessibility_score }}</td>
+            <td class="td-format">{{ rating.concessions_score }}</td>
+            <td class="td-format">{{ rating.aesthetics_score}}</td>
+            <td class="td-format">{{ rating.total_score }}</td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
+
+
 
 
 

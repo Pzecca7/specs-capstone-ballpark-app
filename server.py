@@ -175,9 +175,6 @@ def ballpark_reviews(ballpark_id):
 
     ballpark = crud.get_ballpark_by_id(ballpark_id)
 
-    for review in ballpark.reviews:
-        visit_date_string = review.visit_date.strftime("%m/%d/%y")
-
     return render_template("ballpark-reviews.html", ballpark=ballpark)
 
 @app.route("/rate")
@@ -227,13 +224,27 @@ def ballpark_ratings(ballpark_id):
 
         total_score = rating.atmosphere_score + rating.concessions_score + rating.accessibility_score + rating.aesthetics_score
 
-        
-
         rating.total_score = total_score
 
         ballpark_ratings.append(rating)
 
+
     return render_template("ballpark-ratings.html", ballpark=ballpark, ballpark_ratings=ballpark_ratings)
+
+@app.route("/user-profile")
+def profile():
+
+    user = crud.get_by_username(session["username"])
+    total_score = 0  
+
+    for rating in user.ratings:
+
+        total_score = rating.atmosphere_score + rating.concessions_score + rating.accessibility_score + rating.aesthetics_score
+
+        rating.total_score = total_score
+
+
+    return render_template("profile.html", user=user, total_score=total_score)
 
 if __name__ == "__main__":
     connect_to_db(app)

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}User profile{% endblock %}
+
+{% block body %}
+
+
+<table class="table table-striped mt-3">
+    <h2 class="table-title">Your Ballpark Ratings</h2>
+    <br>
+    <br>
+    <thead>
+        <tr>
+            <th>Ballpark</th>
+            <th>Atmosphere Score</th>
+            <th>Accessibility Socre</th>
+            <th>Concessions Score</th>
+            <th>Aesthetics Score</th>
+            <th>Total Score</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for rating in user.ratings %}
+    <tr>
+        <td class="td-rating">{{ rating.ballpark.ballpark_name }}</td>
+        <td class="td-rating">{{ rating.atmosphere_score }}</td>
+        <td class="td-rating">{{ rating.accessibility_score }}</td>
+        <td class="td-rating">{{ rating.concessions_score }}</td>
+        <td class="td-rating">{{ rating.aesthetics_score}}</td>
+        <td class="td-rating">{{ rating.total_score }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+<table class="table table-striped mt-3 center">
+    <h2 class="table-title">Your Seat Reviews</h2>
+    <br>
+    <br>
+    <thead>
+        <tr>
+            <th>Ballpark</th>
+            <th>Visit Date</th>
+            <th>Favorite Food Tried</th>
+            <th>Seat Location</th>
+            <th>Description</th>
+            <th>Seat View</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for review in user.reviews %}
+    <tr>
+        <td class="td-format">{{ review.ballpark.ballpark_name }}</td>
+        <td class="td-format">{{ review.visit_date.strftime("%m/%d/%y") }}</td>
+        <td class="td-format">{{ review.favorite_food_tried }}</td>
+        <td class="td-format">{{ review.seat_location }}</td>
+        <td class="td-format">{{ review.description }}</td>
+        <td class="td-format"><img id="seat-view" src="{{ review.seat_view }}" alt="Seat View"></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<table class="table table-striped mt-3 center">
+    <h2 class="table-title"> Bucket-List Tracker </h2>
+    <br>
+    <thead>
+        <tr>
+            <th>Ballpark</th>
+            <th>Completed from Bucket-List</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+    {% for to_do in user.bucket_list  %}
+        {% if to_do.completed == true %}
+    <tr>
+        <td>{{ to_do.feature.ballpark.ballpark_name }}</td>
+        <td>{{ to_do.feature.unique_feature }}</td>>
+    </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
