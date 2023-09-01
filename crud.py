@@ -60,7 +60,7 @@ def create_rating(atmosphere_score, accessibility_score, concessions_score, aest
 
     return rating
 
-def get_rating_by_id(rating_id):
+def get_ratings_by_id(ratings_id):
 
-    return Rating.query.get(rating_id)
+    return Rating.query.get(ratings_id)
 

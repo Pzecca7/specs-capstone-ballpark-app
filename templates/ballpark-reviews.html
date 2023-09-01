@@ -40,13 +40,16 @@
         <tbody>
         {% for review in ballpark.reviews %}
         <tr>
-
-            <td class="td-format">{{ review.user.username }}</td>
-            <td class="td-format">{{ review.visit_date.strftime("%m/%d/%y") }}</td>
-            <td class="td-format">{{ review.favorite_food_tried }}</td>
-            <td class="td-format">{{ review.seat_location }}</td>
-            <td id="description-td" class="td-format">{{ review.description }}</td>
-            <td class="td-format"><img id="seat-view" src="{{ review.seat_view }}" alt="Seat View"></td>
+            {% if review.user.username != session["username"] %}
+            <td><a href="/look-up-user/{{ review.user.user_id }}"><button class="btn btn-primary">{{ review.user.username }}</button></a></td>
+            {% else %}
+            <td><a href=""><button class="btn btn-danger">Delete</button></a></td>
+            {% endif %}
+            <td> {{ review.visit_date.strftime("%m/%d/%y") }} </td>
+            <td> {{ review.favorite_food_tried }} </td>
+            <td> {{ review.seat_location }} </td>
+            <td> {{ review.description }} </td>
+            <td><img id="seat-view" src="{{ review.seat_view }}" alt="Seat View"></td>
         </tr>
         {% endfor %}
         </tbody>

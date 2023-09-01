@@ -19,7 +19,7 @@
    
         <div id="bricks">
             <div id="title">
-            <h1 id="yellow">Take Me Out <br> to the <br> Ball Game</h1>
+            <h1 id="yellow">Take Me Out <br> to the <br> Ballgame</h1>
             </div>
         </div>
     </header>
@@ -34,13 +34,14 @@
                     <a class="nav-link" href="/review">Review</a>
                     <a class="nav-link" href="/rate">Rate</a>
                     {% if 'username' in session %}
+                    <a class="nav-link" href="/user-profile">Your Profile</a>
+                    {% endif %}    
+                </div>
+                    {% if 'username' in session %}
                         <a class="nav-link" href="/logout">Log Out</a>
                     {% else %}
                         <a class="nav-link" href="/login">Login</a>
                     {% endif %}
-                    {% if 'username' in session %}
-                        <a class="nav-link" href="/user-profile">Your Profile</a>
-                    {% endif %}    
                 </div>
             </div>
         </div>

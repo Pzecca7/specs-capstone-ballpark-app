@@ -81,11 +81,12 @@ def all_ballparks():
 @app.route("/ballparks/<ballpark_id>/features")
 def features(ballpark_id):
 
+    ballpark = crud.get_ballpark_by_id(ballpark_id)
     feature_form = FeatureForm()
     feature_form.update_features(Ballpark.query.get(ballpark_id).feature)
     
 
-    return render_template("features.html", feature_form=feature_form, ballpark_id=ballpark_id)
+    return render_template("features.html", feature_form=feature_form, ballpark_id=ballpark_id, ballpark=ballpark)
 
 @app.route("/create-bucket-list/<ballpark_id>", methods=["POST"])
 def create_bucket_list(ballpark_id):
@@ -175,6 +176,8 @@ def ballpark_reviews(ballpark_id):
 
     ballpark = crud.get_ballpark_by_id(ballpark_id)
 
+    
+
     return render_template("ballpark-reviews.html", ballpark=ballpark)
 
 @app.route("/rate")
@@ -245,6 +248,29 @@ def profile():
 
 
     return render_template("profile.html", user=user, total_score=total_score)
+
+@app.route("/look-up-user/<user_id>")
+def look_up_user(user_id):
+
+    user = crud.get_user_by_id(user_id)
+    total_score = 0  
+
+    for rating in user.ratings:
+
+        total_score = rating.atmosphere_score + rating.concessions_score + rating.accessibility_score + rating.aesthetics_score
+
+        rating.total_score = total_score
+
+    return render_template("user.html", user=user, total_score=total_score)
+
+# @app.route("/delete-rating/<ratings_id>")
+# def delete_rating(ratings_id):
+
+#     ratings_to_delete = crud.get_ratings_by_id(ratings_id)
+#     db.session.delete(ratings_to_delete)
+#     db.session.commit()
+
+#     return redirect("/ballparks")
 
 if __name__ == "__main__":
     connect_to_db(app)

@@ -39,12 +39,16 @@
         <tbody>
         {% for rating in ballpark_ratings %}
         <tr>
-            <td class="td-format">{{ rating.user.username }}</td>
-            <td class="td-format">{{ rating.atmosphere_score }}</td>
-            <td class="td-format">{{ rating.accessibility_score }}</td>
-            <td class="td-format">{{ rating.concessions_score }}</td>
-            <td class="td-format">{{ rating.aesthetics_score}}</td>
-            <td class="td-format">{{ rating.total_score }}</td>
+            {% if rating.user.username != session["username"] %}
+            <td><a href="/look-up-user/{{ rating.user.user_id }}"><button class="btn btn-primary">{{ rating.user.username }}</button></a></td>
+            {% else %}
+            <td><a href=""><button class="btn btn-danger">Delete</button></a></td>
+            {% endif %}
+            <td>{{ rating.atmosphere_score }}</td>
+            <td>{{ rating.accessibility_score }}</td>
+            <td>{{ rating.concessions_score }}</td>
+            <td>{{ rating.aesthetics_score}}</td>
+            <td>{{ rating.total_score }}</td>
         </tr>
         {% endfor %}
         </tbody>

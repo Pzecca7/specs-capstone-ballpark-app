@@ -6,12 +6,19 @@
 
 
 <div id="feature-form-container" class="form-container mt-5">
-    <h2>Add Features to your Bucket-List</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="rr-head"><h3>Add features from {{ ballpark.ballpark_name }} to your Bucket-List</h3></div>
     <form id="feature-form" action='/create-bucket-list/{{ ballpark_id }}' method="POST">
         {{ feature_form.csrf_token }}
         <div class="form-group mt-2">
             {{ feature_form.feature_selection.label }}
-            {{ feature_form.feature_selection}}
+            {{ feature_form.feature_selection }}
         </div>
         <div class="form-group mt-2">
             {{ feature_form.submit(type="submit", class="btn btn-primary") }}
