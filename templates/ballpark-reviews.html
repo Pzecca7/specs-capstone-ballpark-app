@@ -43,7 +43,7 @@
             {% if review.user.username != session["username"] %}
             <td><a href="/look-up-user/{{ review.user.user_id }}"><button class="btn btn-primary">{{ review.user.username }}</button></a></td>
             {% else %}
-            <td><a href=""><button class="btn btn-danger">Delete</button></a></td>
+            <td><a href="/delete-review/{{ review.review_id }}"><button class="btn btn-danger">Delete</button></a></td>
             {% endif %}
             <td> {{ review.visit_date.strftime("%m/%d/%y") }} </td>
             <td> {{ review.favorite_food_tried }} </td>

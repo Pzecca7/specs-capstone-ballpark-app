@@ -174,6 +174,10 @@ def add_review():
 @app.route("/ballparks/<ballpark_id>/reviews")
 def ballpark_reviews(ballpark_id):
 
+    if 'username' not in session:
+        flash("You must be logged in to see ballpark reviews")
+        return redirect("/login")
+
     ballpark = crud.get_ballpark_by_id(ballpark_id)
 
     
@@ -216,6 +220,10 @@ def create_rating():
 
 @app.route("/ballparks/<ballpark_id>/ratings")
 def ballpark_ratings(ballpark_id):
+
+    if 'username' not in session:
+        flash("You must be logged in to see ballpark ratings")
+        return redirect("/login")
 
     ballpark = crud.get_ballpark_by_id(ballpark_id)
     total_score = 0
@@ -263,14 +271,23 @@ def look_up_user(user_id):
 
     return render_template("user.html", user=user, total_score=total_score)
 
-# @app.route("/delete-rating/<ratings_id>")
-# def delete_rating(ratings_id):
+@app.route("/delete-rating/<ratings_id>")
+def delete_rating(ratings_id):
 
-#     ratings_to_delete = crud.get_ratings_by_id(ratings_id)
-#     db.session.delete(ratings_to_delete)
-#     db.session.commit()
+    ratings_to_delete = crud.get_ratings_by_id(ratings_id)
+    db.session.delete(ratings_to_delete)
+    db.session.commit()
 
-#     return redirect("/ballparks")
+    return redirect("/ballparks")
+
+@app.route("/delete-review/<review_id>")
+def delete_review(review_id):
+
+    review_to_delete = crud.get_review_by_id(review_id)
+    db.session.delete(review_to_delete)
+    db.session.commit()
+
+    return redirect("/ballparks")
 
 if __name__ == "__main__":
     connect_to_db(app)

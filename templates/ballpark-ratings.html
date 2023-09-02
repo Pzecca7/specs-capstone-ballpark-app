@@ -42,7 +42,7 @@
             {% if rating.user.username != session["username"] %}
             <td><a href="/look-up-user/{{ rating.user.user_id }}"><button class="btn btn-primary">{{ rating.user.username }}</button></a></td>
             {% else %}
-            <td><a href=""><button class="btn btn-danger">Delete</button></a></td>
+            <td><a href="/delete-rating/{{ rating.ratings_id }}"><button class="btn btn-danger">Delete</button></a></td>
             {% endif %}
             <td>{{ rating.atmosphere_score }}</td>
             <td>{{ rating.accessibility_score }}</td>

@@ -54,6 +54,10 @@ def create_review(visit_date, seat_location, description, seat_view, favorite_fo
 
     return review
 
+def get_review_by_id(review_id):
+
+    return Review.query.get(review_id)
+
 def create_rating(atmosphere_score, accessibility_score, concessions_score, aesthetics_score, user_id, ballpark_id):
 
     rating = Rating(atmosphere_score=atmosphere_score, accessibility_score=accessibility_score, concessions_score=concessions_score, aesthetics_score=aesthetics_score, user_id=user_id, ballpark_id=ballpark_id)
